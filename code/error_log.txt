@@ -1,0 +1,91 @@
+Run started at: 2025-02-18 00:42:04
+Traceback (most recent call last):
+  File "/workspaces/universal/CIHI_Knee_Hip_wait/CIHI_venv/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Procedure'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspaces/universal/CIHI_Knee_Hip_wait/code/main.py", line 17, in <module>
+    wait_times = extractor.extract_wait_times()
+  File "/workspaces/universal/CIHI_Knee_Hip_wait/code/extract_data.py", line 79, in extract_wait_times
+    'hip_replacement': wait_times_df[wait_times_df['Procedure'] == 'Hip Replacement'],
+  File "/workspaces/universal/CIHI_Knee_Hip_wait/CIHI_venv/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/workspaces/universal/CIHI_Knee_Hip_wait/CIHI_venv/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Procedure'
+2025-02-18 00:48:27,126 - root - INFO - Run started at: 2025-02-18 00:48:27
+2025-02-18 00:48:27,126 - root - INFO - DataExtractor initialized successfully.
+2025-02-18 00:48:27,501 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 00:48:27,501 - extract_data - ERROR - Error extracting wait times data: 'Procedure'
+2025-02-18 00:48:27,502 - root - ERROR - Error extracting wait times: 'Procedure'
+2025-02-18 00:48:33,643 - extract_data - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-18 00:48:50,908 - root - INFO - Hospital spending data extracted successfully:     This workbook has 16 worksheets, including this Instructions page, a table of contents on tab 2 and 12 data table worksheets beginning on tab 3. Notes and sources can be found after the tables in column A. Definitions can be found on tab 15. Contact information can be found on tab 16.  ...  Unnamed: 16383
+0                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+1                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+2                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+3                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+4                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+5                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+6                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+7                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+8                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+9                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+10                                                NaN                                                                                                                                                                                                                                              ...             NaN
+11                                                NaN                                                                                                                                                                                                                                              ...             NaN
+12                                                NaN                                                                                                                                                                                                                                              ...             NaN
+13                                                NaN                                                                                                                                                                                                                                              ...             NaN
+14                                                NaN                                                                                                                                                                                                                                              ...             NaN
+15                                                NaN                                                                                                                                                                                                                                              ...             NaN
+
+[16 rows x 16384 columns]
+2025-02-18 00:48:50,962 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 00:48:50,962 - extract_data - ERROR - Error extracting wait times data: 'Procedure'
+2025-02-18 00:48:50,962 - extract_data - ERROR - Error merging data: 'Procedure'
+2025-02-18 00:48:50,962 - root - ERROR - Error extracting merged data: 'Procedure'
+2025-02-18 03:01:10,568 - root - INFO - Run started at: 2025-02-18 03:01:10
+2025-02-18 03:01:10,568 - root - INFO - DataExtractor initialized successfully.
+2025-02-18 03:01:14,888 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:01:14,888 - extract_data - ERROR - Error extracting wait times data: 'Indicator'
+2025-02-18 03:01:14,888 - root - ERROR - Error extracting wait times: 'Indicator'
+2025-02-18 03:01:21,845 - extract_data - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-18 03:01:39,440 - root - INFO - Hospital spending data extracted successfully:     This workbook has 16 worksheets, including this Instructions page, a table of contents on tab 2 and 12 data table worksheets beginning on tab 3. Notes and sources can be found after the tables in column A. Definitions can be found on tab 15. Contact information can be found on tab 16.  ...  Unnamed: 16383
+0                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+1                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+2                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+3                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+4                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+5                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+6                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+7                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+8                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+9                                                 NaN                                                                                                                                                                                                                                              ...             NaN
+10                                                NaN                                                                                                                                                                                                                                              ...             NaN
+11                                                NaN                                                                                                                                                                                                                                              ...             NaN
+12                                                NaN                                                                                                                                                                                                                                              ...             NaN
+13                                                NaN                                                                                                                                                                                                                                              ...             NaN
+14                                                NaN                                                                                                                                                                                                                                              ...             NaN
+15                                                NaN                                                                                                                                                                                                                                              ...             NaN
+
+[16 rows x 16384 columns]
+2025-02-18 03:01:42,944 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:01:42,944 - extract_data - ERROR - Error extracting wait times data: 'Indicator'
+2025-02-18 03:01:42,944 - extract_data - ERROR - Error merging data: 'Indicator'
+2025-02-18 03:01:42,945 - root - ERROR - Error extracting merged data: 'Indicator'
+2025-02-18 03:06:18,319 - __main__ - ERROR - File not found: wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:06:18,319 - __main__ - ERROR - Error extracting wait times data: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-18 03:06:18,319 - __main__ - ERROR - Error in main execution: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-18 03:09:04,165 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:09:04,166 - extract_data - ERROR - Error extracting wait times data: 'Indicator'
+2025-02-18 03:10:19,954 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:45:35,233 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:45:35,234 - extract_data - ERROR - Error extracting wait times data: 'Indicator'
+2025-02-18 03:47:04,728 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:55:22,654 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 03:56:07,964 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx

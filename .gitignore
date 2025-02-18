@@ -1,0 +1,39 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment folders
+CIHI_venv/
+venv/
+.env/
+.venv/
+
+# Ignore system files (e.g., MacOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore logs and temporary files
+*.log
+*.bak
+*.swp
+
+# Ignore Excel files if they are not meant to be versioned
+*.xlsx
+
+# Ignore Streamlit configuration or runtime files
+.streamlit/
+
+# Ignore other editor-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore test or temporary directories
+tests/
+temp/
