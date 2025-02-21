@@ -31,12 +31,12 @@ try:
 except Exception as e:
     logging.error(f"Error extracting wait times: {e}")
 
-# # Try extracting hospital spending data and log any errors
-# try:
-#     spending = extractor.extract_hospital_spending()
-#     logging.info(f"Hospital spending data extracted successfully: {spending}")
-# except Exception as e:
-#     logging.error(f"Error extracting hospital spending: {e}")
+# Try extracting hospital spending data and log any errors
+try:
+    spending = extractor.extract_hospital_spending()
+    logging.info(f"Hospital spending data extracted successfully: {spending}")
+except Exception as e:
+    logging.error(f"Error extracting hospital spending: {e}")
 
 # # Try getting merged data for analysis and log any errors
 # try:

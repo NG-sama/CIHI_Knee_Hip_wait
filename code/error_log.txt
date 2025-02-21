@@ -89,3 +89,45 @@ KeyError: 'Procedure'
 2025-02-18 03:47:04,728 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
 2025-02-18 03:55:22,654 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
 2025-02-18 03:56:07,964 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 17:38:09,257 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 17:52:21,119 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 17:53:46,584 - extract_data - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 20:57:50,150 - __main__ - ERROR - File not found: wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 20:57:50,150 - __main__ - ERROR - Error extracting wait times data: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-18 20:57:50,150 - __main__ - ERROR - Error in main execution: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-18 20:59:55,098 - __main__ - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 21:04:30,808 - __main__ - ERROR - File not found: wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-18 21:04:30,808 - __main__ - ERROR - Error extracting wait times data: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-18 21:04:30,808 - __main__ - ERROR - Error in main execution: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-18 21:04:45,291 - __main__ - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-21 01:04:54,882 - __main__ - ERROR - File not found: wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-21 01:04:54,882 - __main__ - ERROR - Error extracting wait times data: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-21 01:04:54,883 - __main__ - ERROR - Error in main execution: [Errno 2] No such file or directory: 'assets/wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx'
+2025-02-21 01:05:28,898 - __main__ - INFO - Successfully read wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx
+2025-02-21 04:38:31,345 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:23:53,613 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:23:53,613 - __main__ - ERROR - Error reading hospital-spending-series-a-2005-2022-data-tables-en.xlsx: 'list' object is not callable
+2025-02-21 05:23:53,613 - __main__ - ERROR - Error extracting hospital spending data: 'list' object is not callable
+2025-02-21 05:25:50,975 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:25:53,680 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:25:56,576 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:25:58,988 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:01,624 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:04,247 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:07,005 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:09,569 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:12,028 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:14,624 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:26:17,149 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:31:54,684 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:31:57,295 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:00,385 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:03,295 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:06,255 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:08,910 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:11,614 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:15,149 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:18,147 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:21,164 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:23,759 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx
+2025-02-21 05:32:26,288 - __main__ - INFO - Successfully read hospital-spending-series-a-2005-2022-data-tables-en.xlsx

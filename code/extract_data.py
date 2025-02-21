@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Union, Tuple
 import logging
 
 # Set up logging
@@ -24,22 +24,27 @@ class DataExtractor:
         self.wait_times_file = "wait-times-priority-procedures-in-canada-2024-data-tables-en.xlsx"
         self.hospital_spending_file = "hospital-spending-series-a-2005-2022-data-tables-en.xlsx"
 
-    def read_excel_file(self, filename: str, sheet_name: Optional[str] = None, header: Optional[int] = 0, usecols: Optional[range] = None) -> pd.DataFrame:
+    def read_excel_file(self, filename: str, sheet_name: Optional[Union[str,int]] = None, header: Optional[int] = 0, usecols: Optional[range] = None, skiprows: Optional[int] = 0, nrows: Optional[int] = None) -> Union[pd.DataFrame, Dict[str, pd.DataFrame]]:
         """
-        Safely read an Excel file with proper error handling.
-        
-        Args:
-            filename (str): Name of the Excel file
-            sheet_name (str, optional): Name of the sheet to read
+            Read an Excel file and return the data from a specific sheet or all sheets.
             
-        Returns:
-            pd.DataFrame: DataFrame containing the Excel data
-        """
+            Args:
+                filename (str): Path to the Excel file.
+                sheet_name (str or int, optional): Name or index of the sheet to read. If not specified, all sheets are read.
+                header (int, optional): Row number to use as column names (default is 0, the first row).
+                usecols (range, optional): Specifies which columns to read from the file.
+                skiprows (int,optional): Number of rows to skip at the start (default is 0).
+                nrows (int, optional): Number of rows to read (default is None, which reads all rows).
+            Returns:
+                Union[pd.DataFrame, Dict[str, pd.DataFrame]]:
+                - If a specific sheet is requested, returns a single `DataFrame` for that sheet.
+                - If no `sheet_name` is provided, returns a dictionary where the keys are sheet names and the values are `DataFrame` objects for each sheet.
+            """
         try:
             file_path = os.path.join(self.assets_path, filename)
             
             # Read with full options for proper data extraction
-            if sheet_name:
+            if isinstance(sheet_name,str):
                 df = pd.read_excel(
                     file_path,
                     sheet_name=sheet_name,
@@ -49,17 +54,24 @@ class DataExtractor:
                     na_values=['NA', 'N/A', ''],
                     keep_default_na=True
                 )
+                logger.info(f"Successfully read {filename}")
+                return df
             else:
                 # Read all sheets if no sheet_name specified
+                name_of_sheet = pd.ExcelFile(file_path).sheet_names
                 df = pd.read_excel(
                     file_path,
+                    sheet_name=sheet_name,
+                    header = header,
+                    usecols= usecols,
                     engine='openpyxl',
+                    skiprows=skiprows, 
+                    nrows=nrows,
                     na_values=['NA', 'N/A', ''],
                     keep_default_na=True
                 )
-            
-            logger.info(f"Successfully read {filename}")
-            return df
+                logger.info(f"Successfully read sheet {name_of_sheet[sheet_name]} from {filename}")
+                return df, name_of_sheet[sheet_name]
             
         except FileNotFoundError:
             logger.error(f"File not found: {filename}")
@@ -83,77 +95,30 @@ class DataExtractor:
                 'hip_replacement': wait_times_df[wait_times_df['Indicator'] == 'Hip Replacement'],
                 'knee_replacement': wait_times_df[wait_times_df['Indicator'] == 'Knee Replacement']
             }
-            
-            # Basic cleaning and preprocessing
-            for procedure_name, df in procedures.items():
-                procedures[procedure_name] = self._clean_wait_times_data(df)
-            
+ 
             return procedures
             
         except Exception as e:
             logger.error(f"Error extracting wait times data: {str(e)}")
             raise
 
-    def extract_hospital_spending(self) -> pd.DataFrame:
+    def extract_hospital_spending(self) -> Dict[str, pd.DataFrame]:
         """
         Extract hospital spending data.
         
         Returns:
-            pd.DataFrame: Cleaned hospital spending data
-        """
+            Dict[str, pd.DataFrame]: Dictionary with sheet names as keys and corresponding DataFrames as values.        """
         try:
-            spending_df = self.read_excel_file(self.hospital_spending_file)
-            return self._clean_spending_data(spending_df)
+            province_spending = {}
+            for i in range(2,14):
+                spending_df, name_sheet = self.read_excel_file(self.hospital_spending_file, sheet_name= i,header= 4, nrows= 18)
+                province_spending[name_sheet] = spending_df
+        
+            return province_spending
             
         except Exception as e:
             logger.error(f"Error extracting hospital spending data: {str(e)}")
             raise
-
-    def _clean_wait_times_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Clean and preprocess wait times data.
-        
-        Args:
-            df (pd.DataFrame): Raw wait times DataFrame
-            
-        Returns:
-            pd.DataFrame: Cleaned DataFrame
-        """
-        cleaned_df = df.copy()
-        
-        # Remove any completely empty rows or columns
-        cleaned_df.dropna(how='all', axis=0, inplace=True)
-        cleaned_df.dropna(how='all', axis=1, inplace=True)
-        
-        # Convert wait time columns to numeric, coercing errors to NaN
-        numeric_columns = cleaned_df.select_dtypes(include=['object']).columns
-        for col in numeric_columns:
-            cleaned_df[col] = pd.to_numeric(cleaned_df[col], errors='coerce')
-        
-        return cleaned_df
-
-    def _clean_spending_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Clean and preprocess hospital spending data.
-        
-        Args:
-            df (pd.DataFrame): Raw hospital spending DataFrame
-            
-        Returns:
-            pd.DataFrame: Cleaned DataFrame
-        """
-        cleaned_df = df.copy()
-        
-        # Remove any completely empty rows or columns
-        cleaned_df.dropna(how='all', axis=0, inplace=True)
-        cleaned_df.dropna(how='all', axis=1, inplace=True)
-        
-        # Convert spending columns to numeric, coercing errors to NaN
-        numeric_columns = cleaned_df.select_dtypes(include=['object']).columns
-        for col in numeric_columns:
-            cleaned_df[col] = pd.to_numeric(cleaned_df[col], errors='coerce')
-        
-        return cleaned_df
 
     def get_merged_data(self) -> pd.DataFrame:
         """
@@ -180,24 +145,3 @@ class DataExtractor:
         except Exception as e:
             logger.error(f"Error merging data: {str(e)}")
             raise
-
-# Usage example
-if __name__ == "__main__":
-    # Initialize extractor
-    extractor = DataExtractor("assets")
-    
-    try:
-        # Extract wait times data
-        wait_times_data = extractor.extract_wait_times()
-        print("Wait times data shape:", {k: v.shape for k, v in wait_times_data.items()})
-        
-        # Extract hospital spending data
-        spending_data = extractor.extract_hospital_spending()
-        print("Hospital spending data shape:", spending_data.shape)
-        
-        # Get merged data
-        merged_data = extractor.get_merged_data()
-        print("Merged data shape:", merged_data.shape)
-        
-    except Exception as e:
-        logger.error(f"Error in main execution: {str(e)}")
