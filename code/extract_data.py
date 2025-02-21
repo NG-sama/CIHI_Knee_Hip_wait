@@ -2,13 +2,19 @@ import pandas as pd
 import os
 from typing import Dict, Optional, Union, Tuple
 import logging
-
+import sys
 # Set up logging
+# Create a memory handler that keeps only recent logs
+memory_handler = logging.handlers.MemoryHandler(
+    capacity=1000,  # Keep only last 1000 records
+    flushLevel=logging.ERROR,  # Automatically flush on ERROR
+    target=logging.StreamHandler(sys.stderr)  # Send to stderr for errors
+)
+# Configure logging to be minimal and memory-efficient
 logging.basicConfig(
-    filename='/workspaces/universal/CIHI_Knee_Hip_wait/code/error_log.txt',
-    level=logging.INFO,  # Log level (INFO, WARNING, ERROR, etc.)
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    filemode='a'  # Append mode to avoid overwriting the log file
+    level=logging.WARNING,  # Only log warnings and errors
+    format='%(levelname)s - %(message)s',  # Simplified format
+    handlers=[memory_handler]
 )
 logger = logging.getLogger(__name__)
 

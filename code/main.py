@@ -1,13 +1,19 @@
 import logging
 import time
 from extract_data import DataExtractor
+import sys
 
-# Configure logging
+# Create a memory handler that keeps only recent logs
+memory_handler = logging.handlers.MemoryHandler(
+    capacity=1000,  # Keep only last 1000 records
+    flushLevel=logging.ERROR,  # Automatically flush on ERROR
+    target=logging.StreamHandler(sys.stderr)  # Send to stderr for errors
+)
+# Configure logging to be minimal and memory-efficient
 logging.basicConfig(
-    filename='/workspaces/universal/CIHI_Knee_Hip_wait/code/error_log.txt',
-    level=logging.INFO,  # You can change this to logging.DEBUG for more detailed output
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filemode='a'  # 'a' for append mode, so logs don't overwrite previous ones
+    level=logging.WARNING,  # Only log warnings and errors
+    format='%(levelname)s - %(message)s',  # Simplified format
+    handlers=[memory_handler]
 )
 
 # Get current timestamp

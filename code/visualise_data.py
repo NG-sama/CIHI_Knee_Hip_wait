@@ -3,11 +3,18 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from typing import Dict, List
 import logging
-
-# Set up logging
+import sys
+# Create a memory handler that keeps only recent logs
+memory_handler = logging.handlers.MemoryHandler(
+    capacity=1000,  # Keep only last 1000 records
+    flushLevel=logging.ERROR,  # Automatically flush on ERROR
+    target=logging.StreamHandler(sys.stderr)  # Send to stderr for errors
+)
+# Configure logging to be minimal and memory-efficient
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    level=logging.WARNING,  # Only log warnings and errors
+    format='%(levelname)s - %(message)s',  # Simplified format
+    handlers=[memory_handler]
 )
 logger = logging.getLogger(__name__)
 

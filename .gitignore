@@ -40,3 +40,5 @@ temp/
 
 # Other file ignores
 dftype.md
+error_log.txt
+outputs.txt
