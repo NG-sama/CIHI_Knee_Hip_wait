@@ -37,3 +37,6 @@ Thumbs.db
 # Ignore test or temporary directories
 tests/
 temp/
+
+# Other file ignores
+dftype.md
